@@ -55,6 +55,10 @@
     {
       "name": "test",
       "password": "test"
+    },
+    {
+      "name": "pepe",
+      "password": "123"
     }
   ]
 }
