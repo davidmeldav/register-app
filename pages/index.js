@@ -8,13 +8,13 @@ import Link from "next/Link";
 
 export default function Home({ names }) {
 	const { isAuth, setAuth, user, setCurrentUserAndSave } = useLogin();
-	const existNameInArray = useArrayContains();
-	const existPasswordInArray = useArrayContains();
-	const nameString = "";
+	const {detectExistInArray:existNameInArray} = useArrayContains();
+	const {detectExistInArray:existPasswordInArray} = useArrayContains();
 
 	const submitFromApp = React.useCallback(async (loginData) => {
 		//hook de comprobación existe usuario en bbdd
-		if (existNameInArray.detectExistInArray(loginData.name, names, "name") == true && existPasswordInArray.detectExistInArray(loginData.password, names, "password") == true) {
+    const {name,password}=loginData;
+		if (existNameInArray(name, names, "name") == true && existPasswordInArray(password, names, "password") == true) {
 			console.log("existe");
 			//autentifico usuario y guardo nombre en provider
 			setAuth(true);
@@ -27,7 +27,11 @@ export default function Home({ names }) {
 
 	return (
 		<div>
+      <h3>Bienvenido a la home</h3>
+      <p></p>
+      <h5>Haz login para ver contenido con acceso restringido:</h5>
 			<FormList onSubmit={submitFromApp} />
+      <p>Enlaces:</p>
 			<Link
 				href={{
 					pathname: "http://localhost:3000/Details/",
@@ -38,7 +42,7 @@ export default function Home({ names }) {
 			<p>
 				<Link
 					href={{
-						pathname: "http://localhost:3000/SignIn/",
+						pathname: "http://localhost:3000/SignUp/",
 					}}
 				>
 					<a>Dáte de alta!!</a>
