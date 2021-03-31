@@ -30,7 +30,7 @@ export default function Home({ names }) {
       <h5>Haz login para ver contenido con acceso restringido:</h5>
 			<FormList onSubmit={submitFromApp} />
       <p>Enlaces:</p>
-      <LinkComponent href={{ pathname: "http://localhost:3000/Details/"	}} message={"página de detalles (acceso restringido)"}/>
+      <LinkComponent href={{ pathname: "http://localhost:3000/Details"	}} message={"página de detalles (acceso restringido)"}/>
 			<p>
       <LinkComponent href={{ pathname: "http://localhost:3000/SignUp/"	}} message={"Dáte de alta!!"}/> 
 			
