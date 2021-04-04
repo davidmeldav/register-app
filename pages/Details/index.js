@@ -38,7 +38,7 @@ export async function getServerSideProps() {
 	};
 	const dataQuery = GET_CHARACTERS;
 	const { characters: dataCharacters } = await useResults(defaultVars, dataQuery);
-	console.log("fasfdsa", dataCharacters);
+	//console.log("fasfdsa", dataCharacters);
 	return {
 		props: { dataCharacters },
 	};

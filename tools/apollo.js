@@ -5,7 +5,9 @@ const httpLink = new HttpLink({ uri: 'https://rickandmortyapi.com/graphql' });
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   // add the authorization to the headers
+  
   operation.setContext(({headers})=>{
+    //console.log("headers",autthorization);
     return {
         headers:{
             ...headers,
