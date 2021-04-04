@@ -1,6 +1,5 @@
 import Head from "next/head";
-import React, {useState, Fragment} from "react";
-import styles from "../styles/Home.module.css";
+import React, {useState, Fragment,useCallback} from "react";
 import { useLogin } from "../hooks/useLogin";
 import { useArrayContains } from "../hooks/useArrayContains";
 import { FormList } from "../components/FormList";
@@ -11,9 +10,16 @@ export default function Home({ names }) {
 	const { isAuth, setAuth, user, setCurrentUserAndSave } = useLogin();
   const  [errorLogin, setErrorLogin] = useState("");
 
-	const submitFromApp = React.useCallback(async (loginData) => {
+  type LoginProps={
+    name:String;
+    password:String;
+  }
+
+	const submitFromApp = React.useCallback(async (loginData:LoginProps) => {
     const {name,password}=loginData;
-   
+    console.log("name");
+    console.log(name);
+    console.log(password)
     const res = await fetch(
       'http://localhost:3000/api/login/',
       {
@@ -47,7 +53,7 @@ export default function Home({ names }) {
 			<FormList onSubmit={submitFromApp} />
       {errorLogin!=="" && <div>error: {errorLogin}</div>}
       <p>Enlaces:</p>
-      <LinkComponent href={{ pathname: "http://localhost:3000/Details"	}} message={"página de detalles (acceso restringido)"}/>
+      <LinkComponent href={{ pathname: "http://localhost:3000/Details"	}} message={"página de detalls (acceso restringido)"}/>
 			<p>
       <LinkComponent href={{ pathname: "http://localhost:3000/SignUp/"	}} message={"Dáte de alta!!"}/> 
 			

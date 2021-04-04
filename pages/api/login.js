@@ -14,7 +14,7 @@ const USERS=db.getState().names ;
 
 console.log(USERS);
 export default (req, res) => {
-
+    console.log("req",req.body)
   return new Promise(resolve => {
     const { method } = req;
     try {
