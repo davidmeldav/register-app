@@ -79,6 +79,22 @@
     {
       "name": "juanito",
       "password": "111"
+    },
+    {
+      "name": "juan",
+      "password": "garcia"
+    },
+    {
+      "name": "inventado",
+      "password": "garcia"
+    },
+    {
+      "name": "inventado",
+      "password": "garcia"
+    },
+    {
+      "name": "hola",
+      "password": "adios"
     }
   ]
 }
