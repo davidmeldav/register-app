@@ -26,12 +26,7 @@ export const useResults= async (vars:{  filter?: { name: String },  page: number
       filter?: { name: String },
       page: number
   };
-  // interface Variables {
-  //   vars:vars
-  // }
     const apolloClient=getApolloClient();
-    //console.log("vars",vars)
-    // const {data : dataCharacters}= <Query<Chars, Variables> query={ALL_PEOPLE_QUERY}></Query>
     const {data : dataCharacters}=  await apolloClient.query<data, Variables>({
         query: dataQuery, variables:vars,
       });

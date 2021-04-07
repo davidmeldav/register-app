@@ -95,6 +95,14 @@
     {
       "name": "hola",
       "password": "adios"
+    },
+    {
+      "name": "prueba",
+      "password": "123"
+    },
+    {
+      "name": "prueba2",
+      "password": "123"
     }
   ]
 }

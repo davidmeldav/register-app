@@ -15,6 +15,7 @@ const [resultsOk, setResultsOk] = useState(true);
   useEffect(async () => {
     const dataQuery=GET_CHARACTERS;
     try{
+        console.log("input",input)
         const {characters}= await useResults(input,dataQuery);
         setDataList(characters.results);
         setResultsOk(true);
@@ -25,14 +26,14 @@ const [resultsOk, setResultsOk] = useState(true);
    //dependencia es el valor del input
   },[searchText.value]);
 
-    const change= async(e) => {
-        searchText.onChange(e);
-    }
+    // const change= async(e) => {
+    //     searchText.onChange(e);
+    // }
     return(
        <Fragment>
             <form >
                 <label>Escribe aquí el personaje que buscas:</label>
-                <input value={searchText.value} onChange={change} type="text"></input>
+                <input value={searchText.value} onChange={searchText.onChange} type="text"></input>
             </form>
 
            {  (resultsOk==false) && <di>No hay resultados, prueba con otra búsqueda</di>

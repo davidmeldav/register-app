@@ -1,12 +1,10 @@
 import Head from "next/head";
 import React, {useState, Fragment,useCallback} from "react";
 import { useLogin } from "../hooks/useLogin";
-import { useArrayContains } from "../hooks/useArrayContains";
 import { FormList } from "../components/FormList";
 import {LinkComponent} from "../components/LinkComponent";
-import { useResults } from "../hooks/useResults";
 
-export default function Home({ names }) {
+export default function Home() {
 	const { isAuth, setAuth, user, setCurrentUserAndSave } = useLogin();
   const  [errorLogin, setErrorLogin] = useState("");
 
@@ -17,9 +15,6 @@ export default function Home({ names }) {
 
 	const submitFromApp = React.useCallback(async (loginData:LoginProps) => {
     const {name,password}=loginData;
-    console.log("name");
-    console.log(name);
-    console.log(password)
     const res = await fetch(
       'http://localhost:3000/api/login/',
       {
@@ -36,9 +31,11 @@ export default function Home({ names }) {
 
     const result = await res.json();
     if(result.status!=='error'){
+      /*update provider*/
       setAuth(true);
 		 	setCurrentUserAndSave(loginData.name);
-       setErrorLogin("");
+       /*end update provider*/
+      setErrorLogin("");
     }
     else{
       setErrorLogin(result.error);
@@ -51,23 +48,22 @@ export default function Home({ names }) {
       <p></p>
       <h5>Haz login para ver contenido con acceso restringido:</h5>
 			<FormList onSubmit={submitFromApp} />
-      {errorLogin!=="" && <div>error: {errorLogin}</div>}
+      {(!isAuth && errorLogin!=="") && <div>error: {errorLogin}</div>}
       <p>Enlaces:</p>
       <LinkComponent href={{ pathname: "http://localhost:3000/Details"	}} message={"página de detalls (acceso restringido)"}/>
 			<p>
       <LinkComponent href={{ pathname: "http://localhost:3000/SignUp/"	}} message={"Dáte de alta!!"}/> 
-			
 			</p>
 		</Fragment>
 	);
 }
 
-export async function getServerSideProps() {
-	//primero de todo cargamos la lista de usuarios
-	const res = await fetch("http://localhost:3004/names");
-	const names = await res.json();
+// export async function getServerSideProps() {
+// 	//primero de todo cargamos la lista de usuarios
+// 	const res = await fetch("http://localhost:3004/names");
+// 	const names = await res.json();
 
-	return {
-		props: { names },
-	};
-}
+// 	return {
+// 		props: { names },
+// 	};
+// }

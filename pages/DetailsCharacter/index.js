@@ -4,7 +4,7 @@ import { CharacterDetail } from "../../components/CharacterDetail";
 import { useResults } from "../../hooks/useResults";
 
 export default function Home({ dataCharacter }) {
-	const { isAuth, user } = useLogin();
+	const { isAuth} = useLogin();
 
 	if (isAuth) {
 		return <CharacterDetail info={dataCharacter} />;
