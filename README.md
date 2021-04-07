@@ -1,3 +1,6 @@
+los datos se cogen en el servidor local json server .Hay que instalarlo npm install json-server / yarn add json-server y luego poner el puerto 3004 json-server --watch db.json --port 3004
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
